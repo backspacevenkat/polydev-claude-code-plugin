@@ -11,7 +11,10 @@
   "plugins": [
     {
       "name": "polydev",
-      "path": "./plugins/polydev"
+      "source": {
+        "type": "local",
+        "path": "./plugins/polydev"
+      }
     }
   ]
 }
