@@ -1,0 +1,21 @@
+{
+  "name": "polydev",
+  "version": "1.0.0",
+  "description": "Multi-model AI consultation for Claude Code. Query GPT, Gemini, Grok, and Claude simultaneously when stuck on bugs, architecture decisions, or code reviews. Achieved 74.6% on SWE-bench Verified.",
+  "author": {
+    "name": "Polydev AI",
+    "url": "https://polydev.ai"
+  },
+  "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
+  "license": "MIT",
+  "keywords": ["multi-model", "ai", "debugging", "code-review", "architecture", "gpt", "gemini", "grok"],
+  "mcpServers": {
+    "polydev": {
+      "command": "npx",
+      "args": ["-y", "polydev-ai@latest", "serve"],
+      "env": {
+        "POLYDEV_API_KEY": "${POLYDEV_API_KEY}"
+      }
+    }
+  }
+}

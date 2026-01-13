@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "polydev-marketplace",
+  "version": "1.0.0",
+  "description": "Multi-model AI consultation - get perspectives from GPT, Gemini, Grok alongside Claude",
+  "owner": {
+    "name": "Polydev AI",
+    "url": "https://polydev.ai",
+    "email": "support@polydev.ai"
+  },
+  "plugins": [
+    {
+      "name": "polydev",
+      "path": "./plugins/polydev"
+    }
+  ]
+}
