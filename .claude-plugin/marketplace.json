@@ -11,10 +11,14 @@
   "plugins": [
     {
       "name": "polydev",
-      "source": {
-        "type": "local",
-        "path": "./plugins/polydev"
-      }
+      "description": "Multi-model AI consultation for Claude Code - get perspectives from GPT, Gemini, and Grok alongside Claude when debugging, reviewing code, or making architecture decisions",
+      "version": "1.0.0",
+      "author": {
+        "name": "Polydev AI",
+        "email": "support@polydev.ai"
+      },
+      "source": "./plugins/polydev",
+      "category": "productivity"
     }
   ]
 }
