@@ -1,6 +1,6 @@
 # Polydev Plugin for Claude Code
 
-🚀 **Multi-model AI consultation for Claude Code** - Get perspectives from GPT, Gemini, and Grok alongside Claude.
+🚀 **Multi-model AI consultation for Claude Code** - Get perspectives from GPT, Gemini,  Grok and many other models alongside Claude.
 
 [![SWE-bench](https://img.shields.io/badge/SWE--bench-74.6%25-green)](https://polydev.ai/articles/swe-bench-paper)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
