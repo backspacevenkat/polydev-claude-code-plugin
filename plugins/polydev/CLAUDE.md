@@ -45,7 +45,7 @@ This plugin provides multi-model AI consultation via the Polydev MCP server.
 
 ## MCP Tools Available
 
-- `polydev_perspectives` - Query multiple AI models simultaneously
+- `polydev_perspectives` - Query multiple AI models simultaneously (Claude, GPT, Gemini, Grok, Z AI)
 - `polydev_list_models` - List available AI models
 
 ## Skills Available
@@ -55,5 +55,5 @@ This plugin provides multi-model AI consultation via the Polydev MCP server.
 
 ## Configuration
 
-Requires `POLYDEV_API_KEY` environment variable.
-Get free API key (1,000 messages/month): https://polydev.ai/dashboard
+Requires `POLYDEV_USER_TOKEN` environment variable.
+Get free token (1,000 messages/month): https://polydev.ai/dashboard

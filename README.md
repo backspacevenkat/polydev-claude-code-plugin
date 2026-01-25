@@ -1,6 +1,6 @@
 # Polydev Plugin for Claude Code
 
-🚀 **Multi-model AI consultation for Claude Code** - Get perspectives from GPT, Gemini,  Grok and many other models alongside Claude.
+🚀 **Multi-model AI consultation for Claude Code** - Get perspectives from Claude, GPT, Gemini, Grok, and Z AI in your IDE.
 
 [![SWE-bench](https://img.shields.io/badge/SWE--bench-74.6%25-green)](https://polydev.ai/articles/swe-bench-paper)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -8,6 +8,8 @@
 ## What is Polydev?
 
 Polydev lets you consult multiple AI models simultaneously when you're stuck on bugs, making architecture decisions, or reviewing code. Different models catch different things - combining their perspectives eliminates blind spots.
+
+**Stop copy-pasting your code into ChatGPT, Claude, Gemini, Grok...** Get all their perspectives in your IDE with one request.
 
 **Research**: Achieved 74.6% on SWE-bench Verified, matching Claude Opus at 62% lower cost.
 
@@ -23,13 +25,13 @@ Polydev lets you consult multiple AI models simultaneously when you're stuck on 
 
 ## Setup
 
-1. **Get your free API key** at [polydev.ai/dashboard](https://polydev.ai/dashboard)
+1. **Get your free token** at [polydev.ai/dashboard](https://polydev.ai/dashboard)
    - 1,000 messages/month free
    - No credit card required
 
-2. **Add API key to your environment:**
+2. **Add token to your environment:**
    ```bash
-   export POLYDEV_API_KEY="your-api-key-here"
+   export POLYDEV_USER_TOKEN="pd_your-token-here"
    ```
 
 3. **Restart Claude Code** and verify with `/mcp`
@@ -63,10 +65,25 @@ The plugin automatically triggers multi-model consultation when you:
 - Request code reviews or security checks
 - Have multiple failed debugging attempts
 
+## Models Available
+
+Polydev queries multiple leading AI models simultaneously:
+
+| Model | Provider |
+|-------|----------|
+| Claude | Anthropic |
+| GPT-4o | OpenAI |
+| Gemini | Google |
+| Grok | xAI |
+| Z AI | Zhipu |
+
 ## Example Output
 
 ```
 🤖 Multi-Model Analysis
+
+Claude's Perspective:
+The N+1 query pattern here is causing performance issues...
 
 GPT's Perspective:
 The infinite re-render is likely caused by object recreation in deps array...
