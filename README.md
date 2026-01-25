@@ -72,7 +72,7 @@ Polydev queries multiple leading AI models simultaneously:
 | Model | Provider |
 |-------|----------|
 | Claude | Anthropic |
-| GPT-4o | OpenAI |
+| GPT | OpenAI |
 | Gemini | Google |
 | Grok | xAI |
 | Z AI | Zhipu |
