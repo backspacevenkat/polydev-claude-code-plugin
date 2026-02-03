@@ -10,7 +10,7 @@ Multi-model AI consultation - get perspectives from GPT-5, Gemini, Grok, and GLM
 - User says "stuck", "confused", "don't know", "can't figure out"
 - User has tried 2+ approaches that failed
 - User expresses frustration with debugging
-→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with the problem context
+→ **Action:** Call `mcp__polydev__get_perspectives` with the problem context
 
 ### 2. Architecture & Design Decisions
 - "How should I structure..."
@@ -19,35 +19,35 @@ Multi-model AI consultation - get perspectives from GPT-5, Gemini, Grok, and GLM
 - Designing new features or systems
 - Database schema decisions
 - API design choices
-→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with the decision context
+→ **Action:** Call `mcp__polydev__get_perspectives` with the decision context
 
 ### 3. Code Review & Security
 - User asks for code review
 - Security audit requests
 - "Is this safe?", "Any issues with..."
 - Performance optimization questions
-→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with the code
+→ **Action:** Call `mcp__polydev__get_perspectives` with the code
 
 ### 4. Technology Choices
 - "Which library should I use?"
 - "Redis vs PostgreSQL?", "React vs Vue?"
 - Framework selection
 - Tool/dependency decisions
-→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with requirements
+→ **Action:** Call `mcp__polydev__get_perspectives` with requirements
 
 ### 5. Debugging Complex Issues
 - After 2 failed debugging attempts
 - "Why isn't this working?"
 - Race conditions, memory leaks, async issues
 - Errors that don't make sense
-→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with error context
+→ **Action:** Call `mcp__polydev__get_perspectives` with error context
 
 ### 6. Best Practices & Patterns
 - "What's the best way to..."
 - "Is this the right pattern?"
 - Clean code questions
 - Testing strategy questions
-→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with the question
+→ **Action:** Call `mcp__polydev__get_perspectives` with the question
 
 ## DO NOT Auto-Invoke For:
 - Simple typo fixes
@@ -60,7 +60,7 @@ Multi-model AI consultation - get perspectives from GPT-5, Gemini, Grok, and GLM
 
 ```javascript
 // Use the MCP tool directly:
-mcp__mcp-execution__polydev_perspectives({
+mcp__polydev__get_perspectives({
   prompt: "Detailed question with full context from conversation"
 })
 ```
