@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "polydev-marketplace",
-  "version": "1.0.0",
-  "description": "Multi-model AI consultation - get perspectives from GPT, Gemini, Grok alongside Claude",
+  "version": "1.8.76",
+  "description": "Multi-model AI perspectives - GPT-5, Gemini, Grok & GLM in parallel. One-click setup, auto-detects local CLI tools.",
   "owner": {
     "name": "Polydev AI",
     "url": "https://polydev.ai",
@@ -11,8 +11,8 @@
   "plugins": [
     {
       "name": "polydev",
-      "description": "Multi-model AI consultation for Claude Code - get perspectives from GPT, Gemini, and Grok alongside Claude when debugging, reviewing code, or making architecture decisions",
-      "version": "1.0.0",
+      "description": "Multi-model AI perspectives - GPT-5, Gemini, Grok & GLM in parallel. One-click setup, auto-detects local CLI tools.",
+      "version": "1.8.76",
       "author": {
         "name": "Polydev AI",
         "email": "support@polydev.ai"
