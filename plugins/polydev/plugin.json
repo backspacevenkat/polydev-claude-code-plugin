@@ -1,6 +1,6 @@
 {
   "name": "polydev",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Multi-model AI consultation for Claude Code. Query GPT, Gemini, Grok, and Claude simultaneously when stuck on bugs, architecture decisions, or code reviews. Achieved 74.6% on SWE-bench Verified.",
   "author": {
     "name": "Polydev AI",
