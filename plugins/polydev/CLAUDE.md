@@ -1,62 +1,86 @@
 # Polydev Plugin for Claude Code
 
-Multi-model AI consultation that helps you get unstuck faster by querying GPT-5, Gemini, Grok, and GLM simultaneously.
+Multi-model AI consultation - get perspectives from GPT-5, Gemini, Grok, and GLM simultaneously.
 
-## IMPORTANT: Auto-Invocation Rules
+## CRITICAL: Auto-Invocation Rules
 
-**Claude MUST automatically invoke Polydev (without asking) when:**
+**Claude MUST automatically invoke Polydev (without asking permission) in these situations:**
 
-1. **User mentions being "stuck" or "confused"** → Use `/polydev:polydev`
-2. **User asks comparison questions** ("Should I use X or Y?") → Use `/polydev:polydev`
-3. **User requests code review** → Use `/polydev:polydev`
-4. **User is debugging with 2+ failed attempts** → Use `/polydev:polydev`
-5. **User asks about architecture/patterns** → Use `/polydev:polydev`
+### 1. When User is STUCK
+- User says "stuck", "confused", "don't know", "can't figure out"
+- User has tried 2+ approaches that failed
+- User expresses frustration with debugging
+→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with the problem context
 
-**Do NOT auto-invoke for:** Simple syntax fixes, typos, straightforward docs, boilerplate code.
+### 2. Architecture & Design Decisions
+- "How should I structure..."
+- "What's the best approach for..."
+- "Should I use X or Y?"
+- Designing new features or systems
+- Database schema decisions
+- API design choices
+→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with the decision context
+
+### 3. Code Review & Security
+- User asks for code review
+- Security audit requests
+- "Is this safe?", "Any issues with..."
+- Performance optimization questions
+→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with the code
+
+### 4. Technology Choices
+- "Which library should I use?"
+- "Redis vs PostgreSQL?", "React vs Vue?"
+- Framework selection
+- Tool/dependency decisions
+→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with requirements
+
+### 5. Debugging Complex Issues
+- After 2 failed debugging attempts
+- "Why isn't this working?"
+- Race conditions, memory leaks, async issues
+- Errors that don't make sense
+→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with error context
+
+### 6. Best Practices & Patterns
+- "What's the best way to..."
+- "Is this the right pattern?"
+- Clean code questions
+- Testing strategy questions
+→ **Action:** Call `mcp__mcp-execution__polydev_perspectives` with the question
+
+## DO NOT Auto-Invoke For:
+- Simple typo fixes
+- Basic syntax errors
+- Straightforward documentation lookups
+- User explicitly says "just Claude" or "your opinion only"
+- Boilerplate/scaffolding code generation
+
+## How to Invoke
+
+```javascript
+// Use the MCP tool directly:
+mcp__mcp-execution__polydev_perspectives({
+  prompt: "Detailed question with full context from conversation"
+})
+```
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/polydev:polydev [question]` | Get multi-model AI perspectives |
-| `/polydev:login` | Authenticate via browser |
-| `/polydev:auth` | Check auth status, credits, and CLI tools |
-| `/polydev:perspectives` | Alias for main command |
-| `/polydev:help` | Show usage guide |
+| `/polydev:polydev` | Get multi-model perspectives |
+| `/polydev:login` | Browser authentication |
+| `/polydev:auth` | Check status and credits |
+| `/polydev:help` | Usage guide |
 
-## Quick Setup
+## Setup
 
 ```bash
-# Full setup - opens browser, auto-saves token, detects CLI tools
-npx polydev-ai
+npx polydev-ai   # Opens browser, auto-saves token
 ```
-
-After setup, restart Claude Code.
-
-## What's Available
-
-### Local AI Tools (FREE!)
-If you have these installed, Polydev uses them first (no API credits!):
-- **Claude Code** - Anthropic's Claude CLI
-- **Codex CLI** - OpenAI's code AI
-- **Gemini CLI** - Google's AI CLI
-- **Aider** - AI pair programming
-
-### API Models (Uses Credits)
-- **GPT-5 Mini** - OpenAI's efficient model
-- **Gemini 3 Flash** - Google's fast reasoning
-- **Grok 4.1 Fast** - xAI's quick inference
-- **GLM-4.7** - Zhipu AI's flagship
-
-## Pricing
-
-| Tier | Credits/month | Cost |
-|------|---------------|------|
-| Free | 500 | $0 |
-| Premium | 10,000 | $10/month |
 
 ## Links
 
 - Dashboard: https://polydev.ai/dashboard
 - Models: https://polydev.ai/dashboard/models
-- Docs: https://polydev.ai/docs
