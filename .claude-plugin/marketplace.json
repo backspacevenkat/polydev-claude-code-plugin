@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "polydev-marketplace",
-  "version": "1.8.83",
+  "version": "1.8.84",
   "description": "Multi-model AI perspectives - GPT-5, Gemini, Grok & GLM in parallel. One-click setup, auto-detects local CLI tools.",
   "owner": {
     "name": "Polydev AI",
@@ -12,7 +12,7 @@
     {
       "name": "polydev",
       "description": "Multi-model AI perspectives - GPT-5, Gemini, Grok & GLM in parallel. One-click setup, auto-detects local CLI tools.",
-      "version": "1.8.83",
+      "version": "1.8.84",
       "author": {
         "name": "Polydev AI",
         "email": "support@polydev.ai"
