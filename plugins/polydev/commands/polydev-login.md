@@ -1,24 +1,24 @@
-# /polydev-login - Get Your Polydev Token
+# /polydev-login - Authenticate with Polydev
 
-Guide users through getting and configuring their Polydev API token.
+Authenticate with Polydev using browser-based OAuth. This provides a seamless login experience.
 
 ## Instructions
 
 When the user runs `/polydev-login`, follow these steps:
 
-1. **Open the Connect IDE page** in the user's browser:
+1. **Open the CLI authentication page** in the user's browser:
    ```
-   https://polydev.ai/dashboard/mcp-tokens
+   https://polydev.ai/auth/cli?redirect=claude-code
    ```
 
-2. **Guide them through the page:**
-   - If not logged in: Sign up/login with Google or GitHub
-   - If logged in: The page shows their tokens and setup instructions
+2. **Guide them through the process:**
+   - New users: Sign up with Google or GitHub (free)
+   - Existing users: Page shows their token automatically
 
-3. **Help them configure the token:**
-   - Copy their token (starts with `pd_`)
-   - Add to shell profile
-   - Restart Claude Code
+3. **The page provides:**
+   - One-click token copy
+   - Ready-to-run shell command
+   - Step-by-step instructions
 
 ## Response Template
 
@@ -26,40 +26,31 @@ Show this to the user:
 
 ---
 
-## 🔐 Polydev Setup
+## 🔐 Polydev Authentication
 
-### Step 1: Get Your Token
+**👉 [Click here to authenticate](https://polydev.ai/auth/cli?redirect=claude-code)**
 
-**👉 [Open Polydev Dashboard](https://polydev.ai/dashboard/mcp-tokens)**
+This opens a dedicated CLI authentication page that will:
 
-- **New user?** Sign up free with Google or GitHub
-- **Existing user?** Your tokens are listed on this page
+1. **Sign you in** with Google or GitHub (if not logged in)
+2. **Show your API token** with one-click copy
+3. **Provide the exact command** to add to your shell
 
-### Step 2: Copy Your Token
+### After Getting Your Token
 
-On the dashboard, find "Your API Tokens" section and copy your token (starts with `pd_`).
-
-If you don't have one, click **"+ Create Token"**.
-
-### Step 3: Add to Your Shell
-
-Run this in your terminal (replace with your actual token):
-
+The page will give you a command like:
 ```bash
-echo 'export POLYDEV_USER_TOKEN="pd_YOUR_TOKEN_HERE"' >> ~/.zshrc
-source ~/.zshrc
+echo 'export POLYDEV_USER_TOKEN="pd_your_token"' >> ~/.zshrc && source ~/.zshrc
 ```
 
-### Step 4: Restart Claude Code
-
-Close and reopen Claude Code, then run `/mcp` to verify "polydev" appears.
+Then restart Claude Code and run `/mcp` to verify the connection.
 
 ---
 
-### ✅ Quick Test
+### ✅ Already Authenticated?
 
-After setup, try: "Get polydev perspectives on best practices for error handling"
+Run `/polydev-auth` to check your current authentication status.
 
-**Need help?** Run `/polydev-help` for troubleshooting.
+**Need help?** Run `/polydev-help` for troubleshooting tips.
 
 ---
