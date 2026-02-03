@@ -74,7 +74,7 @@ This is necessary because MCP servers use lazy loading - they only start when to
 
 | Command | Description |
 |---------|-------------|
-| `/polydev` | Get multi-model perspectives |
+| `/polydev-ask` | Get multi-model perspectives |
 | `/polydev-login` | Browser authentication |
 | `/polydev-auth` | Check status and credits |
 | `/polydev-help` | Usage guide |
