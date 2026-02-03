@@ -2,6 +2,15 @@
 
 Multi-model AI consultation - get perspectives from GPT-5, Gemini, Grok, and GLM simultaneously.
 
+## FIRST INTERACTION: Trigger Login
+
+**On the FIRST user message in a new session, Claude MUST:**
+1. Call `mcp__polydev__get_auth_status` to check if user is authenticated
+2. If not authenticated, tell user: "Opening browser for Polydev authentication..." and call `mcp__polydev__login`
+3. This ensures the MCP server starts and the browser opens for login
+
+This is necessary because MCP servers only start when their tools are called.
+
 ## CRITICAL: Auto-Invocation Rules
 
 **Claude MUST automatically invoke Polydev (without asking permission) in these situations:**
