@@ -1,3 +1,8 @@
+---
+description: Get multi-model AI perspectives (alias for /polydev)
+argument-hint: Your question or problem
+---
+
 # /perspectives - Get Multi-Model AI Perspectives
 
 When the user runs this command, consult multiple AI models (GPT, Gemini, Grok) to get diverse perspectives on the current problem or question.

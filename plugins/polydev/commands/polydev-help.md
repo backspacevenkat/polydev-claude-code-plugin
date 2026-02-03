@@ -1,3 +1,7 @@
+---
+description: Polydev Setup Guide - commands, pricing, and usage
+---
+
 # /polydev-help - Polydev Setup and Usage Guide
 
 Display help information about Polydev multi-model AI consultation.

@@ -1,3 +1,8 @@
+---
+description: Get multi-model AI perspectives on any coding problem
+argument-hint: Your question or problem
+---
+
 # /polydev [question] - Get Multi-Model AI Perspectives
 
 Query multiple AI models (GPT-5, Gemini, Grok, GLM) simultaneously to get diverse perspectives on any coding problem.

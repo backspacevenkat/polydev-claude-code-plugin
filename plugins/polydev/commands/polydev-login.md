@@ -1,3 +1,7 @@
+---
+description: One-click browser authentication for Polydev
+---
+
 # /polydev-login - Browser Authentication
 
 Login to Polydev directly from your IDE. Opens browser for one-click authentication.

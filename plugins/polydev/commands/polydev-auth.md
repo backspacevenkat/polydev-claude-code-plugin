@@ -1,3 +1,7 @@
+---
+description: Check Polydev authentication status and credits
+---
+
 # /polydev-auth - Check Status
 
 Check your Polydev authentication status, credits, and available tools.
