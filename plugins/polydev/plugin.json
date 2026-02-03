@@ -1,14 +1,39 @@
 {
   "name": "polydev",
-  "version": "1.2.0",
-  "description": "Multi-model AI consultation for Claude Code. Query GPT, Gemini, Grok, and Claude simultaneously when stuck on bugs, architecture decisions, or code reviews. Achieved 74.6% on SWE-bench Verified.",
-  "author": {
-    "name": "Polydev AI",
-    "url": "https://polydev.ai"
-  },
-  "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
+  "version": "1.8.76",
+  "description": "Multi-model AI perspectives - GPT-5, Gemini, Grok & GLM in parallel. One-click setup, auto-detects local CLI tools.",
+  "author": "Polydev AI",
+  "repository": "https://github.com/backspacevenkat/polydev-ai",
+  "homepage": "https://polydev.ai",
+  "keywords": ["multi-model", "AI", "perspectives", "consultation", "MCP", "GPT-5", "Gemini", "Grok"],
   "license": "MIT",
-  "keywords": ["multi-model", "ai", "debugging", "code-review", "architecture", "gpt", "gemini", "grok"],
+  "skills": [
+    {
+      "name": "polydev",
+      "description": "Get multi-model AI perspectives on any coding problem",
+      "command": "/polydev"
+    },
+    {
+      "name": "polydev-login",
+      "description": "One-click browser authentication (auto-saves token)",
+      "command": "/polydev-login"
+    },
+    {
+      "name": "polydev-auth",
+      "description": "Check authentication status, credits, and available tools",
+      "command": "/polydev-auth"
+    },
+    {
+      "name": "perspectives",
+      "description": "Alias for /polydev - get multi-model perspectives",
+      "command": "/perspectives"
+    },
+    {
+      "name": "polydev-help",
+      "description": "Get help with Polydev setup and usage",
+      "command": "/polydev-help"
+    }
+  ],
   "mcpServers": {
     "polydev": {
       "command": "npx",
@@ -17,5 +42,22 @@
         "POLYDEV_USER_TOKEN": "${POLYDEV_USER_TOKEN}"
       }
     }
+  },
+  "configuration": {
+    "requiresToken": true,
+    "tokenEnvVar": "POLYDEV_USER_TOKEN",
+    "setupCommand": "npx polydev-ai",
+    "dashboardUrl": "https://polydev.ai/dashboard",
+    "modelsUrl": "https://polydev.ai/dashboard/models",
+    "loginUrl": "https://polydev.ai/auth/cli"
+  },
+  "onboarding": {
+    "message": "Welcome to Polydev! Run 'npx polydev-ai' for one-click setup.",
+    "steps": [
+      "Run: npx polydev-ai",
+      "Browser opens for authentication",
+      "Token auto-saved to your shell",
+      "Restart Claude Code - you're ready!"
+    ]
   }
 }

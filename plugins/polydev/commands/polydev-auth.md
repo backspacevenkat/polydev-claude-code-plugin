@@ -1,64 +1,56 @@
-# /polydev-auth - Check Authentication Status
+# /polydev-auth - Check Status
 
-Check your Polydev authentication status and remaining credits.
+Check your Polydev authentication status, credits, and available tools.
 
 ## Instructions
 
 When the user runs `/polydev-auth`:
 
-1. **Check if POLYDEV_USER_TOKEN is set** by running:
-   ```bash
-   echo $POLYDEV_USER_TOKEN
+1. **Call the get_auth_status MCP tool**:
+   ```
+   Use the polydev MCP server's "get_auth_status" tool
    ```
 
-2. **If token exists** (starts with `pd_`):
-   - Confirm authentication is configured
-   - Try using the polydev MCP tool to verify it works
-   - Show remaining credits if available
+2. **Display the results** showing:
+   - Authentication status
+   - Account email
+   - Credits remaining
+   - Subscription tier
+   - Available tools
 
-3. **If token is missing or invalid**:
-   - Guide them to run `/polydev-login`
+## Example
 
-## Response Template
+**User**: `/polydev-auth`
 
-### If authenticated:
+**Claude uses the get_auth_status tool from polydev MCP server**
 
----
+**If authenticated**:
+> Polydev Status
+> ────────────────────────────────────────
+>
+> Authenticated: Yes
+> Account: user@example.com
+> Credits: 9,500
+> Tier: Premium
+>
+> Available tools:
+> - get_perspectives (query multiple AI models)
+> - get_cli_status (check local CLI tools)
+> - send_cli_prompt (use local CLIs)
+>
+> Dashboard: https://polydev.ai/dashboard
 
-## ✅ Polydev Authentication Status
+**If not authenticated**:
+> Not authenticated.
+>
+> To login:
+> 1. Use `/polydev-login` (opens browser)
+> 2. Or run in terminal: `npx polydev-ai`
+>
+> After login, restart your IDE.
 
-**Status:** Authenticated
-**Token:** `pd_****...****` (configured)
+## Quick Links
 
-To check your credits and usage, visit:
-👉 [polydev.ai/dashboard](https://polydev.ai/dashboard)
-
-**Test it:** Ask me to "get polydev perspectives on [any coding question]"
-
----
-
-### If NOT authenticated:
-
----
-
-## ❌ Polydev Authentication Status
-
-**Status:** Not configured
-
-Your `POLYDEV_USER_TOKEN` environment variable is not set.
-
-### Quick Setup:
-
-1. **Get your free token:** [polydev.ai/dashboard/mcp-tokens](https://polydev.ai/dashboard/mcp-tokens)
-
-2. **Add to your shell:**
-   ```bash
-   echo 'export POLYDEV_USER_TOKEN="pd_your_token"' >> ~/.zshrc
-   source ~/.zshrc
-   ```
-
-3. **Restart Claude Code**
-
-Or run `/polydev-login` for guided authentication.
-
----
+- Dashboard: https://polydev.ai/dashboard
+- Models: https://polydev.ai/dashboard/models
+- Usage: https://polydev.ai/dashboard/usage

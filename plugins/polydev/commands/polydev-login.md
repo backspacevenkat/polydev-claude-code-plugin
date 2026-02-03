@@ -1,56 +1,48 @@
-# /polydev-login - Authenticate with Polydev
+# /polydev-login - Browser Authentication
 
-Authenticate with Polydev using browser-based OAuth. This provides a seamless login experience.
+Login to Polydev directly from your IDE. Opens browser for one-click authentication.
 
 ## Instructions
 
-When the user runs `/polydev-login`, follow these steps:
+When the user runs `/polydev-login`:
 
-1. **Open the CLI authentication page** in the user's browser:
+1. **Call the login MCP tool**:
    ```
-   https://polydev.ai/auth/cli?redirect=claude-code
+   Use the polydev MCP server's "login" tool
    ```
 
-2. **Guide them through the process:**
-   - New users: Sign up with Google or GitHub (free)
-   - Existing users: Page shows their token automatically
+2. **The tool will**:
+   - Open the browser to polydev.ai/auth/cli
+   - Wait for user to authenticate (Google/GitHub)
+   - Auto-save token to ~/.zshrc and ~/.polydev.env
+   - Return success message
 
-3. **The page provides:**
-   - One-click token copy
-   - Ready-to-run shell command
-   - Step-by-step instructions
+3. **After success**, remind user to restart their IDE.
 
-## Response Template
+## Example
 
-Show this to the user:
+**User**: `/polydev-login`
 
----
+**Claude uses the login tool from polydev MCP server**
 
-## 🔐 Polydev Authentication
+**On success**:
+> Login successful!
+>
+> Your token has been saved automatically.
+>
+> **Important:** Restart your IDE to use the new token.
+>
+> After restart, use `/polydev` or `get_perspectives` to query multiple AI models.
 
-**👉 [Click here to authenticate](https://polydev.ai/auth/cli?redirect=claude-code)**
+## Alternative
 
-This opens a dedicated CLI authentication page that will:
-
-1. **Sign you in** with Google or GitHub (if not logged in)
-2. **Show your API token** with one-click copy
-3. **Provide the exact command** to add to your shell
-
-### After Getting Your Token
-
-The page will give you a command like:
+If the MCP tool doesn't work, users can run in terminal:
 ```bash
-echo 'export POLYDEV_USER_TOKEN="pd_your_token"' >> ~/.zshrc && source ~/.zshrc
+npx polydev-ai
 ```
 
-Then restart Claude Code and run `/mcp` to verify the connection.
+## Troubleshooting
 
----
-
-### ✅ Already Authenticated?
-
-Run `/polydev-auth` to check your current authentication status.
-
-**Need help?** Run `/polydev-help` for troubleshooting tips.
-
----
+- Ensure browser is available
+- Check internet connection
+- If browser doesn't open, visit: https://polydev.ai/auth/cli

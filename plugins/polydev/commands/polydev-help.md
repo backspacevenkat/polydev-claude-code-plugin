@@ -1,69 +1,80 @@
-# /polydev-help - Polydev Setup Guide
+# /polydev-help - Polydev Setup and Usage Guide
 
-Display setup instructions and usage information for Polydev multi-model consultation.
+Display help information about Polydev multi-model AI consultation.
 
-## Response
+## Response Template
 
-Show the user this information:
+When the user runs `/polydev-help`, respond with:
 
 ---
 
-# 🚀 Polydev - Multi-Model AI Consultation
+## Polydev - Multi-Model AI Consultation
 
-**Get unstuck faster by consulting GPT, Gemini, and Grok alongside Claude.**
+Query 4 AI models simultaneously. Get unstuck faster with diverse perspectives from GPT-5, Gemini, Grok, and GLM.
 
-## Quick Setup
-
-### 1. Get Your Free Token
-Visit **[polydev.ai/dashboard/mcp-tokens](https://polydev.ai/dashboard/mcp-tokens)** to get your free API token.
-- 1,000 messages/month free
-- No credit card required
-
-### 2. Add Your Token
-Add to your shell profile (`~/.zshrc` or `~/.bashrc`):
+### Quick Start
 
 ```bash
-export POLYDEV_USER_TOKEN="pd_your_token_here"
+# 1. Login (opens browser, auto-configures token)
+/polydev-login
+
+# 2. Use it
+/polydev How should I structure my React state?
 ```
 
-Then restart your terminal or run `source ~/.zshrc`
-
-### 3. Restart Claude Code
-Run `/mcp` to verify Polydev is connected - you should see "polydev" in the list.
-
-## Commands
+### Available Commands
 
 | Command | Description |
 |---------|-------------|
-| `/perspectives` | Get multi-model perspectives on your current problem |
-| `/polydev-help` | Show this setup guide |
+| `/polydev [question]` | Get multi-model AI perspectives on any problem |
+| `/polydev-login` | Authenticate via browser (recommended) |
+| `/polydev-auth` | Check authentication status and credits |
+| `/perspectives` | Alias for `/polydev` |
+| `/polydev-help` | Show this help message |
 
-## Usage Examples
+### Usage Examples
 
 **When debugging:**
-> "I'm stuck on this authentication bug. Use polydev to get different perspectives."
+```
+/polydev I'm getting a TypeError in my React component when mapping over an array
+```
 
-**For architecture decisions:**
-> "Should I use Redis or PostgreSQL for caching? Get polydev perspectives."
+**When choosing technologies:**
+```
+/polydev Should I use Redis or PostgreSQL for session storage?
+```
 
-**For code review:**
-> "Review this authentication code for security issues using polydev."
+**When reviewing code:**
+```
+/polydev Review this authentication flow for security issues
+```
 
-## Troubleshooting
+### How It Works
 
-**MCP server not showing?**
-1. Make sure `POLYDEV_USER_TOKEN` is set: `echo $POLYDEV_USER_TOKEN`
-2. Restart Claude Code completely
-3. Run `/mcp` to check status
+1. You describe your problem or question
+2. Polydev queries 4 AI models in parallel:
+   - **GLM-4.7** (Zhipu AI)
+   - **Gemini 3 Flash** (Google)
+   - **Grok 4.1 Fast** (xAI)
+   - **GPT-5 Mini** (OpenAI)
+3. You get synthesized insights showing:
+   - Where models **agree** (high confidence)
+   - Where models **differ** (needs consideration)
+   - Actionable **recommendations**
 
-**Token not working?**
-- Tokens start with `pd_` - make sure you copied the full token
-- Get a new token at [polydev.ai/dashboard/mcp-tokens](https://polydev.ai/dashboard/mcp-tokens)
+### Pricing
 
-## Research
+| Tier | Credits | Cost |
+|------|---------|------|
+| **Free** | 500/month | $0 (no card required) |
+| **Premium** | 10,000/month | $10/month |
 
-Polydev's multi-model technique achieved **74.6% on SWE-bench Verified**, matching Claude Opus at 62% lower cost.
+**1 credit = 1 request** (queries all 4 models)
 
-📄 [Read the research paper](https://polydev.ai/articles/swe-bench-paper)
+### Support
+
+- Dashboard: [polydev.ai/dashboard](https://polydev.ai/dashboard)
+- Docs: [polydev.ai/docs](https://polydev.ai/docs)
+- Email: support@polydev.ai
 
 ---

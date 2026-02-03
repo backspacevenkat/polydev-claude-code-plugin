@@ -1,66 +1,67 @@
-# /polydev - Multi-Model AI Consultation
+# /polydev [question] - Get Multi-Model AI Perspectives
 
-Query multiple AI models (GPT, Gemini, Grok) simultaneously to get diverse perspectives on coding problems.
-
-## Usage
-
-```
-/polydev [your question]
-```
+Query multiple AI models (GPT-5, Gemini, Grok, GLM) simultaneously to get diverse perspectives on any coding problem.
 
 ## Instructions
 
-When the user runs `/polydev` with a question:
+When the user runs `/polydev [question]`, do the following:
 
-1. **Use the Polydev MCP server** to call `mcp__polydev__get_perspectives` (or similar tool name)
-   - Pass the user's question as the prompt
-   - Include relevant context from the conversation
+1. **Extract the question**: Parse the argument after `/polydev` as the question. If no question is provided, look at the recent conversation context.
 
-2. **If the MCP tool is not available**:
-   - Check if `POLYDEV_USER_TOKEN` is set
-   - If not, guide them to run `/polydev-login` or `/polydev-auth`
+2. **Enhance the question**: Add relevant context from:
+   - Current file being worked on
+   - Recent errors or debugging attempts
+   - Project structure if relevant
 
-3. **Present the results** in a clear format showing each model's perspective
+3. **Call the perspectives MCP tool**:
+   ```
+   mcp__mcp-execution__polydev_perspectives({
+     prompt: "The enhanced question with full context"
+   })
+   ```
 
-## Response Format
+4. **Synthesize the response**:
+   - Highlight areas of **consensus** (high confidence)
+   - Note where models **differ** (needs consideration)
+   - Provide actionable **recommendations**
 
-### 🤖 Multi-Model Analysis
+## Example Usage
 
-**Your Question:** [user's question]
+**User**: `/polydev How should I structure my React state management?`
 
----
-
-**GPT's Perspective:**
-[Summary of GPT's response]
-
-**Gemini's Perspective:**
-[Summary of Gemini's response]
-
-**Grok's Perspective:**
-[Summary of Grok's response]
-
----
-
-### ✅ Consensus Points
-- [Where models agree]
-
-### ⚖️ Different Approaches
-- [Where models differ]
-
-### 💡 Recommendation
-[Synthesized recommendation based on all perspectives]
-
-## Examples
-
+**Claude calls**:
 ```
-/polydev Why is my React useEffect running twice?
-/polydev Should I use Redis or PostgreSQL for session storage?
-/polydev Review this authentication code for security issues
+mcp__mcp-execution__polydev_perspectives({
+  prompt: "How should I structure state management in a React application? I'm building a dashboard with real-time updates, user preferences, and form state. Should I use Redux, Zustand, Jotai, or React Context?"
+})
 ```
 
-## Not Working?
+**Claude synthesizes**:
+> **Multi-Model Perspectives on React State Management**
+>
+> 📊 **Consensus (High Confidence)**:
+> - All models recommend separating server state (React Query/SWR) from client state
+> - Zustand is favored for simplicity in medium-sized apps
+> - Context API is sufficient for theme/auth but not complex state
+>
+> 🔀 **Different Perspectives**:
+> - GPT-5 emphasizes Redux Toolkit for large teams needing predictability
+> - Gemini recommends Jotai for atomic state with real-time needs
+> - Grok suggests starting simple with useState + Context
+>
+> ✅ **Recommendation**: Start with Zustand for client state + React Query for server state. This combination offers the best developer experience while remaining scalable.
 
-If the Polydev MCP server isn't responding:
-1. Run `/polydev-auth` to check authentication
-2. Run `/mcp` to verify the server is connected
-3. Run `/polydev-help` for troubleshooting
+## When to Use
+
+- **Stuck debugging**: After 2-3 failed attempts
+- **Architecture decisions**: Choosing between approaches
+- **Code review**: Getting validation on implementation
+- **Best practices**: Unsure about patterns
+
+## Models Queried
+
+All queries consult 4 models in parallel:
+- **GLM-4.7** - Zhipu AI's flagship model
+- **Gemini 3 Flash** - Google's fast reasoning model
+- **Grok 4.1 Fast** - xAI's quick inference model
+- **GPT-5 Mini** - OpenAI's efficient model

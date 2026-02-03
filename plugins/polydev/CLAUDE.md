@@ -1,59 +1,92 @@
-# Polydev Plugin - Auto-Invocation Guidelines
+# Polydev Plugin for Claude Code
 
-This plugin provides multi-model AI consultation via the Polydev MCP server.
+Multi-model AI consultation that helps you get unstuck faster by querying GPT-5, Gemini, Grok, and GLM simultaneously.
 
-## Auto-Invocation Rules
+## Quick Setup (One Command!)
 
-**IMPORTANT: Claude should automatically invoke Polydev in these situations WITHOUT asking:**
+```bash
+# Full setup - opens browser, auto-saves token, detects CLI tools
+npx polydev-ai
+```
 
-### ✅ Automatically Use Polydev When:
+That's it! The setup wizard will:
+1. ✅ Open browser for one-click authentication
+2. ✅ Auto-save your token (no manual copying!)
+3. ✅ Detect installed AI CLI tools
+4. ✅ Show what's ready to use
 
-1. **User is "stuck" or "confused"**
+After setup, restart Claude Code.
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `/polydev [question]` | Get multi-model AI perspectives |
+| `/polydev-login` | Authenticate via browser |
+| `/polydev-auth` | Check auth status, credits, and CLI tools |
+| `/perspectives` | Alias for `/polydev` |
+| `/polydev-help` | Show usage guide |
+
+## What's Available
+
+### 🔧 Local AI Tools (FREE!)
+If you have these installed, Polydev uses them first (no API credits!):
+- **Claude Code** - Anthropic's Claude CLI
+- **Codex CLI** - OpenAI's code AI
+- **Gemini CLI** - Google's AI CLI
+- **Aider** - AI pair programming
+
+### ☁️ API Models (Uses Credits)
+When local tools aren't available, or for multi-model perspectives:
+- **GPT-5 Mini** - OpenAI's efficient model
+- **Gemini 3 Flash** - Google's fast reasoning
+- **Grok 4.1 Fast** - xAI's quick inference
+- **GLM-4.7** - Zhipu AI's flagship
+
+## Auto-Invocation Guidelines
+
+**Claude should automatically invoke Polydev WITHOUT asking when:**
+
+### ✅ Auto-Invoke When:
+
+1. **User mentions being "stuck" or "confused"**
    - "I'm stuck on this bug"
-   - "I can't figure out why..."
-   - "This is confusing me"
+   - "I can't figure out why this isn't working"
 
-2. **Comparison/choice questions**
+2. **User asks comparison/choice questions**
    - "Should I use X or Y?"
    - "Which is better..."
-   - "What's the best approach..."
+   - "What's the best approach for..."
 
-3. **Code review or security check requests**
+3. **User requests code review or security check**
    - "Review this code"
    - "Check for security issues"
-   - "Is this implementation safe?"
 
-4. **After 2-3 failed debugging attempts**
-   - When the same error persists
-   - "I've tried X and Y but..."
+4. **User is debugging with multiple failed attempts**
+   - After 2-3 unsuccessful debugging attempts
 
-5. **Architecture or design pattern questions**
+5. **User asks about architecture or design patterns**
    - "How should I structure..."
    - "What pattern should I use..."
 
-6. **User explicitly wants multiple opinions**
-   - "What do other models think?"
-   - "Get me different perspectives"
-
 ### ❌ Do NOT Auto-Invoke When:
 
-- Simple syntax fixes or typos
-- Straightforward documentation lookups
-- User explicitly wants only Claude's opinion
-- Boilerplate code generation
-- Clear, single-answer factual questions
+1. Simple syntax fixes or typos
+2. Straightforward documentation lookups
+3. User explicitly wants only Claude's opinion
+4. Boilerplate code generation
 
-## MCP Tools Available
+## Pricing
 
-- `polydev_perspectives` - Query multiple AI models simultaneously (Claude, GPT, Gemini, Grok, Z AI)
-- `polydev_list_models` - List available AI models
+| Tier | Credits/month | Cost |
+|------|---------------|------|
+| Free | 500 | $0 |
+| Premium | 10,000 | $10/month |
 
-## Skills Available
+**Pro Tip:** Install local CLI tools to use them for FREE and save your API credits!
 
-- `/perspectives` - Get multi-model perspectives on current problem
-- `/polydev-help` - Show setup guide and usage information
+## Support
 
-## Configuration
-
-Requires `POLYDEV_USER_TOKEN` environment variable.
-Get free token (1,000 messages/month): https://polydev.ai/dashboard
+- Dashboard: [polydev.ai/dashboard](https://polydev.ai/dashboard)
+- Models: [polydev.ai/dashboard/models](https://polydev.ai/dashboard/models)
+- Docs: [polydev.ai/docs](https://polydev.ai/docs)
