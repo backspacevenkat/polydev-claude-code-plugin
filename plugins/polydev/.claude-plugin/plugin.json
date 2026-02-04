@@ -13,10 +13,7 @@
   "mcpServers": {
     "polydev": {
       "command": "npx",
-      "args": ["-y", "polydev-ai@latest"],
-      "env": {
-        "POLYDEV_USER_TOKEN": "${POLYDEV_USER_TOKEN}"
-      }
+      "args": ["-y", "polydev-ai@latest"]
     }
   }
 }
