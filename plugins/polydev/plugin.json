@@ -2,17 +2,18 @@
   "name": "polydev",
   "version": "1.8.90",
   "description": "Multi-model AI perspectives - GPT-5, Gemini, Grok & GLM in parallel. One-click setup, auto-detects local CLI tools.",
-  "author": "Your Name",
-  "license": "MIT",
-  "scripts": {
-    "start": "node index.js",
-    "build": "webpack --config webpack.config.js",
-    "test": "jest"
+  "author": {
+    "name": "Polydev AI",
+    "url": "https://polydev.ai"
   },
-  "dependencies": {
-    "express": "^4.17.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.3"
+  "repository": "https://github.com/backspacevenkat/polydev-ai",
+  "homepage": "https://polydev.ai",
+  "keywords": ["multi-model", "AI", "perspectives", "consultation", "MCP", "GPT-5", "Gemini", "Grok"],
+  "license": "MIT",
+  "mcpServers": {
+    "polydev": {
+      "command": "npx",
+      "args": ["-y", "polydev-ai@latest"]
+    }
   }
 }
