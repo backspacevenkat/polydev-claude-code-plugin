@@ -1,6 +1,6 @@
 {
   "name": "polydev",
-  "version": "1.9.13",
+  "version": "1.9.14",
   "description": "Multi-model AI perspectives - GPT-5, Gemini, Grok & GLM in parallel. One-click setup, auto-detects local CLI tools.",
   "author": {
     "name": "Polydev AI",
