@@ -10,37 +10,67 @@ Check your Polydev authentication status, credits, and available tools.
 
 When the user runs `/polydev-auth`:
 
-1. **Call the get_auth_status MCP tool**:
-   ```
-   Use the polydev MCP server's "get_auth_status" tool
-   ```
+### Step 1: Check if MCP tools are available
 
-2. **Display the results** showing:
-   - Authentication status
-   - Account email
-   - Credits remaining
-   - Subscription tier
-   - Available tools
+Look for tools starting with `mcp__plugin_polydev_polydev__` in your available tools list.
+
+### Step 2a: If MCP tools ARE available
+
+Call the `get_auth_status` tool:
+```
+mcp__plugin_polydev_polydev__get_auth_status({})
+```
+
+### Step 2b: If MCP tools are NOT available (Cowork / sandboxed environments)
+
+Check authentication status via bash:
+
+```bash
+# Check if token exists
+if [ -n "$POLYDEV_USER_TOKEN" ]; then
+  # Verify token with the server
+  RESULT=$(curl -s -X POST "https://www.polydev.ai/api/mcp" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $POLYDEV_USER_TOKEN" \
+    -d '{"action": "check_status"}')
+  echo "$RESULT" | python3 -m json.tool 2>/dev/null || echo "$RESULT"
+elif [ -f "$HOME/.polydev.env" ]; then
+  # Try loading from file
+  source "$HOME/.polydev.env"
+  if [ -n "$POLYDEV_USER_TOKEN" ]; then
+    RESULT=$(curl -s -X POST "https://www.polydev.ai/api/mcp" \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer $POLYDEV_USER_TOKEN" \
+      -d '{"action": "check_status"}')
+    echo "$RESULT" | python3 -m json.tool 2>/dev/null || echo "$RESULT"
+  else
+    echo "No token found. Run /polydev:login to authenticate."
+  fi
+else
+  echo "Not authenticated. Run /polydev:login to authenticate."
+fi
+```
+
+### Step 3: Display the results
+
+Show the user:
+- Authentication status (connected/not connected)
+- Account email
+- Credits remaining
+- Subscription tier
+- If not authenticated, suggest running `/polydev:login`
 
 ## Example
 
 **User**: `/polydev-auth`
 
-**Claude uses the get_auth_status tool from polydev MCP server**
-
 **If authenticated**:
 > Polydev Status
-> ────────────────────────────────────────
 >
 > Authenticated: Yes
 > Account: user@example.com
 > Credits: 9,500
 > Tier: Premium
->
-> Available tools:
-> - get_perspectives (query multiple AI models)
-> - get_cli_status (check local CLI tools)
-> - send_cli_prompt (use local CLIs)
 >
 > Dashboard: https://polydev.ai/dashboard
 
@@ -48,10 +78,8 @@ When the user runs `/polydev-auth`:
 > Not authenticated.
 >
 > To login:
-> 1. Use `/polydev-login` (opens browser)
+> 1. Use `/polydev:login`
 > 2. Or run in terminal: `npx polydev-ai`
->
-> After login, restart your IDE.
 
 ## Quick Links
 
