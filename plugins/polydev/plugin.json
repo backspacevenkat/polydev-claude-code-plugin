@@ -20,7 +20,7 @@
   ],
   "license": "MIT",
   "mcpServers": {
-    "polydev": {
+    "mcp": {
       "command": "npx",
       "args": [
         "-y",
