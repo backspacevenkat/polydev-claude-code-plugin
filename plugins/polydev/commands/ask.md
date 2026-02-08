@@ -18,13 +18,13 @@ When the user runs `/polydev-ask [question]`, do the following:
    - Recent errors or debugging attempts
    - Project structure if relevant
 
-3. **Check if MCP tools are available** by looking for `mcp__plugin_polydev_polydev__get_perspectives` in your tools.
+3. **Check if MCP tools are available** by looking for `mcp__plugin_polydev_mcp__get_perspectives` in your tools.
 
 ### If MCP tools ARE available:
 
 Call the perspectives tool:
 ```
-mcp__plugin_polydev_polydev__get_perspectives({
+mcp__plugin_polydev_mcp__get_perspectives({
   prompt: "The enhanced question with full context"
 })
 ```
@@ -69,7 +69,7 @@ curl -s -X POST "https://www.polydev.ai/api/mcp" \
 
 **Claude calls** (if MCP tools available):
 ```
-mcp__plugin_polydev_polydev__get_perspectives({
+mcp__plugin_polydev_mcp__get_perspectives({
   prompt: "How should I structure state management in a React application? I'm building a dashboard with real-time updates, user preferences, and form state."
 })
 ```
