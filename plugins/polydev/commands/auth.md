@@ -12,13 +12,18 @@ When the user runs `/polydev-auth`:
 
 ### Step 1: Check if MCP tools are available
 
-Look for tools starting with `mcp__plugin_polydev_polydev__` in your available tools list.
+Look for tools starting with `mcp__plugin_polydev_mcp__` in your available tools list.
 
 ### Step 2a: If MCP tools ARE available
 
 Call the `get_auth_status` tool:
 ```
-mcp__plugin_polydev_polydev__get_auth_status({})
+mcp__plugin_polydev_mcp__get_auth_status({})
+```
+
+If the result says "sandboxed environment" or browser login is unavailable, and the user has a token, pass it directly:
+```
+mcp__plugin_polydev_mcp__get_auth_status({ user_token: "pd_user_token_here" })
 ```
 
 ### Step 2b: If MCP tools are NOT available (Cowork / sandboxed environments)
@@ -80,6 +85,15 @@ Show the user:
 > To login:
 > 1. Use `/polydev:login`
 > 2. Or run in terminal: `npx polydev-ai`
+
+**If in Cowork/sandbox (browser unavailable)**:
+> Pass your token directly:
+>
+> ```
+> mcp__plugin_polydev_mcp__get_auth_status({ user_token: "pd_your_token_here" })
+> ```
+>
+> Get your token from https://polydev.ai/dashboard
 
 ## Quick Links
 

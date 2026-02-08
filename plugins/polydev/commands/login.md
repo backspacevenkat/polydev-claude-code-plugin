@@ -12,14 +12,20 @@ When the user runs `/polydev-login`:
 
 ### Step 1: Check if MCP tools are available
 
-Look for tools starting with `mcp__plugin_polydev_polydev__` in your available tools list.
+Look for tools starting with `mcp__plugin_polydev_mcp__` in your available tools list.
 
 ### Step 2a: If MCP tools ARE available
 
 Call the `login` tool:
 ```
-mcp__plugin_polydev_polydev__login({ open_browser: true })
+mcp__plugin_polydev_mcp__login({ open_browser: true })
 ```
+
+If browser login fails or the environment is sandboxed, the user can pass their token directly:
+```
+mcp__plugin_polydev_mcp__login({ user_token: "pd_user_token_here" })
+```
+Get the token from https://polydev.ai/dashboard
 
 ### Step 2b: If MCP tools are NOT available (Cowork / sandboxed environments)
 
