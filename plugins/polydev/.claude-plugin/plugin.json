@@ -25,7 +25,8 @@
       "args": [
         "-y",
         "polydev-ai@latest"
-      ]
+      ],
+      "timeout": 300
     }
   }
 }
