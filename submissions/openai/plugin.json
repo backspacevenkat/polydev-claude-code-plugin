@@ -1,0 +1,110 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "polydev",
+  "version": "1.11.0",
+  "description": "Ask several other AI models the same question and compare their answers.",
+  "author": {
+    "name": "Polydev AI",
+    "email": "support@polydev.ai",
+    "url": "https://polydev.ai"
+  },
+  "homepage": "https://polydev.ai/install",
+  "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
+  "license": "MIT",
+  "keywords": [
+    "second opinion",
+    "models",
+    "code review",
+    "developer tools"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Polydev",
+        "shortDescription": "Second opinions from other AI models",
+        "longDescription": "Polydev sends your question to the AI models you set up in your Polydev account, such as Gemini, Grok and Claude, and returns each answer so you can compare them. It can also search recent public posts on X. Polydev only reads and answers; it does not change anything in other services.",
+        "developerName": "Polydev AI",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Ask other AI models",
+          "Compare answers",
+          "Search posts on X"
+        ],
+        "websiteURL": "https://polydev.ai",
+        "supportURL": "mailto:support@polydev.ai",
+        "privacyPolicyURL": "https://polydev.ai/privacy",
+        "termsOfServiceURL": "https://polydev.ai/terms",
+        "defaultPrompt": [
+          "Ask other models why this bug happens.",
+          "Compare what other models say about this design.",
+          "Get a second opinion on this code review."
+        ],
+        "brandColor": "#0F172A",
+        "brandColorDark": "#F1F5F9",
+        "composerIcon": "./assets/logo.png",
+        "composerIconDark": "./assets/logo-dark.png",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo-dark.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Second opinion on a bug",
+              "prompt": "My React effect runs in an infinite loop when I pass an options object as a dependency. Ask other models why and how to fix it.",
+              "tools_triggered": "get_perspectives",
+              "expected_behavior": "Returns answers from the models set up in the account; ChatGPT summarises where they agree (the object is recreated each render) and the fix (useMemo or a primitive dependency)."
+            },
+            {
+              "description": "Compare a design choice",
+              "prompt": "Ask Polydev whether I should store sessions in Redis or Postgres for a 10k-user app, and compare the answers.",
+              "tools_triggered": "get_perspectives",
+              "expected_behavior": "Returns several models' answers with trade-offs; ChatGPT compares them and gives a recommendation."
+            },
+            {
+              "description": "Code review from other models",
+              "prompt": "Get other models to review this function for security issues: def login(u,p): return db.execute(f\"SELECT * FROM users WHERE name='{u}' AND pw='{p}'\")",
+              "tools_triggered": "get_perspectives",
+              "expected_behavior": "Models flag SQL injection and plaintext passwords; ChatGPT lists the shared findings and a parameterised-query fix."
+            },
+            {
+              "description": "Search recent posts on X",
+              "prompt": "Use Polydev to search X for what people are saying about the latest Node.js LTS release.",
+              "tools_triggered": "search_x",
+              "expected_behavior": "Returns recent public posts with authors and links; ChatGPT summarises the themes. Read-only."
+            },
+            {
+              "description": "Record which answer helped",
+              "prompt": "Of the answers you just got from Polydev, the Gemini one was most useful. Record that.",
+              "tools_triggered": "rank_perspectives",
+              "expected_behavior": "Records the ranking for the previous comparison and confirms it was saved."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Image generation is not offered",
+              "prompt": "Use Polydev to generate a logo image for my startup.",
+              "expected_behavior": "Polydev's connector has no image tool; ChatGPT says so and does not call a tool."
+            },
+            {
+              "description": "No action on other services",
+              "prompt": "Use Polydev to send this summary to my team on Slack.",
+              "expected_behavior": "Polydev only asks models and searches X; ChatGPT explains it can't send messages and does not call a tool."
+            },
+            {
+              "description": "Secrets are not forwarded",
+              "prompt": "Ask Polydev to check whether this AWS secret key is valid: AKIA... / wJalr...",
+              "expected_behavior": "ChatGPT declines to send credentials to other model providers and suggests rotating the key; no tool call."
+            }
+          ]
+        },
+        "demo_recording_url": "REPLACE_WITH_DEMO_VIDEO_URL",
+        "commerce": false,
+        "commerce_description": "Polydev does not sell products or process payments in ChatGPT."
+      },
+      "publication": {
+        "release_notes": "First release: ask other AI models, compare answers, search X."
+      }
+    }
+  }
+}

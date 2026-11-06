@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "polydev": {
+      "type": "streamable-http",
+      "url": "https://polydev.ai/mcp",
+      "auth": {
+        "type": "oauth",
+        "client": {
+          "mode": "dcr"
+        }
+      }
+    }
+  }
+}
