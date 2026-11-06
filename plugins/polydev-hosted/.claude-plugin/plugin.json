@@ -1,0 +1,29 @@
+{
+  "name": "polydev-hosted",
+  "version": "1.11.0",
+  "description": "Ask several other AI models (GPT, Gemini, Grok and more) the same question and compare the answers. Hosted: nothing to install, sign in once.",
+  "author": {
+    "name": "Polydev AI",
+    "url": "https://polydev.ai",
+    "email": "support@polydev.ai"
+  },
+  "homepage": "https://polydev.ai/install",
+  "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
+  "license": "MIT",
+  "keywords": [
+    "multi-model",
+    "second-opinion",
+    "mcp",
+    "gpt",
+    "gemini",
+    "grok",
+    "claude",
+    "codex"
+  ],
+  "mcpServers": {
+    "polydev": {
+      "type": "http",
+      "url": "https://polydev.ai/mcp"
+    }
+  }
+}

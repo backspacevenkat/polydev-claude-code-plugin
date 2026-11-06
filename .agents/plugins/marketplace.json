@@ -1,0 +1,20 @@
+{
+  "name": "polydev",
+  "interface": {
+    "displayName": "Polydev"
+  },
+  "plugins": [
+    {
+      "name": "polydev-hosted",
+      "source": {
+        "source": "local",
+        "path": "./plugins/polydev-hosted"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

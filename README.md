@@ -1,110 +1,83 @@
-# Polydev Plugin for Claude Code
+# Polydev for Claude Code, Codex, Cursor and Gemini CLI
 
-🚀 **Multi-model AI consultation for Claude Code** - Get perspectives from Claude, GPT, Gemini, Grok, and Z AI in your IDE.
+Ask several other AI models (GPT, Gemini, Grok and more) the same question from your coding agent,
+and compare the answers. Useful for a second opinion on a bug, a design choice or a code review.
 
-[![SWE-bench](https://img.shields.io/badge/SWE--bench-74.6%25-green)](https://polydev.ai/articles/swe-bench-paper)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-## What is Polydev?
+There are two ways to run it:
 
-Polydev lets you consult multiple AI models simultaneously when you're stuck on bugs, making architecture decisions, or reviewing code. Different models catch different things - combining their perspectives eliminates blind spots.
+- **Hosted** (`polydev-hosted`): nothing to install. The agent connects to `https://polydev.ai/mcp`
+  and you sign in to Polydev in the browser the first time.
+- **Local** (`polydev`): runs the npm client on your machine (Node.js 20 or newer), so it can also
+  use the AI CLIs you are already signed in to, such as Claude Code, Codex and Gemini CLI.
 
-**Stop copy-pasting your code into ChatGPT, Claude, Gemini, Grok...** Get all their perspectives in your IDE with one request.
-
-**Research**: Achieved 74.6% on SWE-bench Verified, matching Claude Opus at 62% lower cost.
-
-## Installation
+## Claude Code
 
 ```bash
-# Add the Polydev marketplace
 /plugin marketplace add backspacevenkat/polydev-claude-code-plugin
-
-# Install the plugin
-/plugin install polydev
+/plugin install polydev-hosted@polydev-marketplace
 ```
 
-## Setup
+Then run `/mcp`, choose `polydev` and sign in. For the local version, install
+`polydev@polydev-marketplace` instead; its first call opens the browser to sign in.
 
-1. **Get your free token** at [polydev.ai/dashboard](https://polydev.ai/dashboard)
-   - 1,000 messages/month free
-   - No credit card required
+Without the plugin:
 
-2. **Add token to your environment:**
-   ```bash
-   export POLYDEV_USER_TOKEN="pd_your-token-here"
-   ```
-
-3. **Restart Claude Code** and verify with `/mcp`
-
-## Usage
-
-### Slash Commands
-
-| Command | Description |
-|---------|-------------|
-| `/perspectives` | Get multi-model perspectives on current problem |
-| `/polydev-help` | Show setup guide |
-
-### Natural Language
-
-Just ask Claude - it will automatically invoke Polydev when appropriate:
-
-```
-"I'm stuck on this authentication bug. Get different perspectives."
-
-"Should I use Redis or PostgreSQL for session storage?"
-
-"Review this API endpoint for security issues using polydev."
+```bash
+claude mcp add --transport http polydev https://polydev.ai/mcp
 ```
 
-### Auto-Invocation
+## Codex
 
-The plugin automatically triggers multi-model consultation when you:
-- Say you're "stuck" or "confused"
-- Ask comparison questions ("Should I use X or Y?")
-- Request code reviews or security checks
-- Have multiple failed debugging attempts
-
-## Models Available
-
-Polydev queries multiple leading AI models simultaneously:
-
-| Model | Provider |
-|-------|----------|
-| Claude | Anthropic |
-| GPT | OpenAI |
-| Gemini | Google |
-| Grok | xAI |
-| Z AI | Zhipu |
-
-## Example Output
-
+```bash
+codex plugin marketplace add backspacevenkat/polydev-claude-code-plugin
+codex plugin add polydev-hosted@polydev
 ```
-🤖 Multi-Model Analysis
 
-Claude's Perspective:
-The N+1 query pattern here is causing performance issues...
+Or add the server directly:
 
-GPT's Perspective:
-The infinite re-render is likely caused by object recreation in deps array...
-
-Gemini's Perspective:
-Check for setState calls directly in the component body...
-
-Grok's Perspective:
-Consider using useCallback for function dependencies...
-
-✅ Consensus: All models agree the issue is in the dependency array
-💡 Recommendation: Use useMemo/useCallback for object/function deps
+```bash
+codex mcp add polydev --url https://polydev.ai/mcp
+codex mcp login polydev
 ```
+
+## Gemini CLI
+
+```bash
+gemini extensions install https://github.com/backspacevenkat/polydev-claude-code-plugin
+```
+
+Then run `/mcp auth polydev`.
+
+## Cursor, VS Code, Windsurf, Claude and ChatGPT
+
+See [polydev.ai/install](https://polydev.ai/install) for one-click links and the settings for each app.
+
+## Tools
+
+| Tool | What it does |
+|------|--------------|
+| `get_perspectives` | Sends your prompt to the models set up in your Polydev account and returns each answer |
+| `search_x` | Searches recent posts on X (read-only) |
+| `rank_perspectives` | Records which answer helped most |
+
+The plugin's slash command `/polydev-hosted:ask <question>` (or `/polydev:ask` for the local version)
+gathers the relevant context, calls `get_perspectives` and summarises where the models agree and differ.
+The agent calls Polydev only when you ask for it or agree to it.
+
+## Privacy
+
+Prompts you send through Polydev are passed to the model providers you chose. Don't include secrets.
+Disconnect an app at any time under [Connected apps](https://polydev.ai/dashboard/mcp-tokens).
+See the [privacy policy](https://polydev.ai/privacy).
 
 ## Links
 
-- 🌐 [Polydev Website](https://polydev.ai)
-- 📄 [Research Paper](https://polydev.ai/articles/swe-bench-paper)
-- 📚 [Claude Code Guide](https://polydev.ai/articles/claude-code-guide)
-- 💬 [Support](mailto:support@polydev.ai)
+- [polydev.ai](https://polydev.ai)
+- [Install guide](https://polydev.ai/install)
+- [Support](mailto:support@polydev.ai)
 
 ## License
 
-MIT License - see [LICENSE](LICENSE)
+MIT, see [LICENSE](LICENSE).

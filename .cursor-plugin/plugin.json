@@ -1,0 +1,11 @@
+{
+  "name": "polydev",
+  "description": "Ask several other AI models the same question and compare the answers.",
+  "version": "1.11.0",
+  "author": {
+    "name": "Polydev AI"
+  },
+  "homepage": "https://polydev.ai/install",
+  "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
+  "license": "MIT"
+}

@@ -1,5 +1,5 @@
 ---
-description: Polydev Setup Guide - commands, pricing, and usage
+description: Polydev setup guide - commands and usage
 ---
 
 # /polydev-help - Polydev Setup and Usage Guide
@@ -14,7 +14,7 @@ When the user runs `/polydev-help`, respond with:
 
 ## Polydev - Multi-Model AI Consultation
 
-Query 4 AI models simultaneously. Get unstuck faster with diverse perspectives from GPT-5, Gemini, Grok, and GLM.
+Ask several other AI models the same question and compare their answers.
 
 ### Quick Start
 
@@ -32,7 +32,7 @@ Query 4 AI models simultaneously. Get unstuck faster with diverse perspectives f
 |---------|-------------|
 | `/polydev [question]` | Get multi-model AI perspectives on any problem |
 | `/polydev-login` | Authenticate via browser (recommended) |
-| `/polydev-auth` | Check authentication status and credits |
+| `/polydev-auth` | Check authentication status |
 | `/perspectives` | Alias for `/polydev` |
 | `/polydev-help` | Show this help message |
 
@@ -56,24 +56,16 @@ Query 4 AI models simultaneously. Get unstuck faster with diverse perspectives f
 ### How It Works
 
 1. You describe your problem or question
-2. Polydev queries 4 AI models in parallel:
-   - **GLM-4.7** (Zhipu AI)
-   - **Gemini 3 Flash** (Google)
-   - **Grok 4.1 Fast** (xAI)
-   - **GPT-5 Mini** (OpenAI)
+2. Polydev asks the models set up in your account (your local CLIs, your own API keys, or the free allowance) in parallel; the current list is at [polydev.ai/docs](https://polydev.ai/docs)
 3. You get synthesized insights showing:
    - Where models **agree** (high confidence)
    - Where models **differ** (needs consideration)
    - Actionable **recommendations**
 
-### Pricing
+### Cost
 
-| Tier | Credits | Cost |
-|------|---------|------|
-| **Free** | 500/month | $0 (no card required) |
-| **Premium** | 10,000/month | $10/month |
-
-**1 credit = 1 request** (queries all 4 models)
+Polydev is free. Your own access pays for the tokens: the AI CLIs you are signed in to on this machine,
+your own API keys, or a one-time allowance of 10 requests on Polydev's keys.
 
 ### Support
 

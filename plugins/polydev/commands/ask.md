@@ -5,7 +5,7 @@ argument-hint: Your question or problem
 
 # /polydev-ask [question] - Get Multi-Model AI Perspectives
 
-Query multiple AI models (GPT-5, Gemini, Grok, GLM) simultaneously to get diverse perspectives on any coding problem.
+Ask several other AI models (such as GPT, Gemini and Grok) the same question and compare their answers.
 
 ## Instructions
 
@@ -82,7 +82,7 @@ mcp__plugin_polydev_mcp__get_perspectives({
 > - Zustand is favored for simplicity in medium-sized apps
 >
 > **Different Perspectives**:
-> - GPT-5 emphasizes Redux Toolkit for large teams
+> - GPT emphasizes Redux Toolkit for large teams
 > - Gemini recommends Jotai for atomic state
 > - Grok suggests starting simple with useState + Context
 >
@@ -95,10 +95,6 @@ mcp__plugin_polydev_mcp__get_perspectives({
 - **Code review**: Getting validation on implementation
 - **Best practices**: Unsure about patterns
 
-## Models Queried
+## Models
 
-All queries consult 4+ models in parallel:
-- **GLM-4.7** - Zhipu AI's flagship model
-- **Gemini 3** - Google's reasoning model
-- **Grok 4.1** - xAI's inference model
-- **GPT-5** - OpenAI's model
+Polydev asks the models set up in the user's account; the current list is at https://polydev.ai/docs.

@@ -1,22 +1,22 @@
 {
   "name": "polydev",
-  "version": "1.10.25",
-  "description": "Multi-model AI perspectives - GPT-5, Gemini, Grok & GLM in parallel. One-click setup, auto-detects local CLI tools.",
+  "version": "1.11.0",
+  "description": "Ask several other AI models (GPT, Gemini, Grok and more) the same question and compare the answers. Runs locally and can use the AI CLIs you are signed in to.",
   "author": {
     "name": "Polydev AI",
     "url": "https://polydev.ai"
   },
-  "repository": "https://github.com/backspacevenkat/polydev-ai",
+  "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
   "homepage": "https://polydev.ai",
   "keywords": [
     "multi-model",
-    "AI",
-    "perspectives",
-    "consultation",
-    "MCP",
-    "GPT-5",
-    "Gemini",
-    "Grok"
+    "second-opinion",
+    "mcp",
+    "gpt",
+    "gemini",
+    "grok",
+    "claude",
+    "codex"
   ],
   "license": "MIT",
   "mcpServers": {

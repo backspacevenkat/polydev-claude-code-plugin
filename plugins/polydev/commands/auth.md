@@ -1,10 +1,10 @@
 ---
-description: Check Polydev authentication status and credits
+description: Check Polydev authentication status
 ---
 
 # /polydev-auth - Check Status
 
-Check your Polydev authentication status, credits, and available tools.
+Check your Polydev authentication status and available tools.
 
 ## Instructions
 
@@ -61,8 +61,7 @@ fi
 Show the user:
 - Authentication status (connected/not connected)
 - Account email
-- Credits remaining
-- Subscription tier
+- Configured models
 - If not authenticated, suggest running `/polydev:login`
 
 ## Example
@@ -74,8 +73,6 @@ Show the user:
 >
 > Authenticated: Yes
 > Account: user@example.com
-> Credits: 9,500
-> Tier: Premium
 >
 > Dashboard: https://polydev.ai/dashboard
 

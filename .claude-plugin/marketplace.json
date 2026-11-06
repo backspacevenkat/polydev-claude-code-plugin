@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "polydev-marketplace",
-  "version": "1.10.25",
-  "description": "Multi-model AI perspectives - GPT-5, Gemini, Grok & GLM in parallel. One-click setup, auto-detects local CLI tools.",
+  "version": "1.11.0",
+  "description": "Polydev: ask several AI models the same question from your agent and compare the answers.",
   "owner": {
     "name": "Polydev AI",
     "url": "https://polydev.ai",
@@ -10,11 +10,24 @@
   },
   "plugins": [
     {
-      "name": "polydev",
-      "description": "Multi-model AI perspectives - GPT-5, Gemini, Grok & GLM in parallel. One-click setup, auto-detects local CLI tools.",
-      "version": "1.10.25",
+      "name": "polydev-hosted",
+      "description": "Ask several other AI models (GPT, Gemini, Grok and more) the same question and compare the answers. Hosted: nothing to install, sign in once.",
+      "version": "1.11.0",
       "author": {
         "name": "Polydev AI",
+        "url": "https://polydev.ai",
+        "email": "support@polydev.ai"
+      },
+      "source": "./plugins/polydev-hosted",
+      "category": "productivity"
+    },
+    {
+      "name": "polydev",
+      "description": "Ask several other AI models (GPT, Gemini, Grok and more) the same question and compare the answers. Runs locally and can use the AI CLIs you are signed in to.",
+      "version": "1.11.0",
+      "author": {
+        "name": "Polydev AI",
+        "url": "https://polydev.ai",
         "email": "support@polydev.ai"
       },
       "source": "./plugins/polydev",

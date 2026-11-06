@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "polydev": {
+      "type": "http",
+      "url": "https://polydev.ai/mcp"
+    }
+  }
+}
