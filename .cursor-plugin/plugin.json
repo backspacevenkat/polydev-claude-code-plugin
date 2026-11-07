@@ -1,11 +1,15 @@
 {
   "name": "polydev",
-  "description": "Every AI model, inside the app you already use. Every answer says what paid for it.",
+  "displayName": "Polydev",
+  "description": "Ask GPT, Claude, Gemini, Grok and other AI models from Cursor, one by name or several at once. Every answer says what paid for it. Hosted: sign in once, nothing to install.",
   "version": "1.12.0",
   "author": {
-    "name": "Polydev AI"
+    "name": "Polydev AI",
+    "email": "info@polydev.ai"
   },
   "homepage": "https://polydev.ai/install",
   "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": ["mcp", "ai-models", "gpt", "claude", "gemini", "grok", "openrouter"],
+  "logo": "assets/logo.png"
 }
