@@ -8,6 +8,7 @@
     "email": "info@polydev.ai"
   },
   "homepage": "https://polydev.ai/install",
+  "privacyPolicyUrl": "https://polydev.ai/privacy",
   "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
   "license": "MIT",
   "keywords": [
@@ -20,10 +21,5 @@
     "claude",
     "codex"
   ],
-  "mcpServers": {
-    "polydev": {
-      "type": "http",
-      "url": "https://polydev.ai/mcp"
-    }
-  }
+  "icon": ".claude-plugin/icon.png"
 }
