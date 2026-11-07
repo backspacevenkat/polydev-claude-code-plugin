@@ -1,7 +1,8 @@
 {
   "name": "polydev-hosted",
+  "displayName": "Polydev",
   "version": "1.12.0",
-  "description": "Ask GPT, Claude, Gemini, Grok and more from the app you already use. Every answer says what paid for it. Hosted: nothing to install, sign in once.",
+  "description": "Ask GPT, Gemini, Grok and other AI models from Claude, one by name or several at once. Every answer says what paid for it. Nothing to install: sign in once.",
   "author": {
     "name": "Polydev AI",
     "url": "https://polydev.ai",
@@ -9,6 +10,9 @@
   },
   "homepage": "https://polydev.ai/install",
   "privacyPolicyUrl": "https://polydev.ai/privacy",
+  "termsOfServiceUrl": "https://polydev.ai/terms",
+  "documentationUrl": "https://polydev.ai/blog/connector-guide",
+  "supportUrl": "https://github.com/backspacevenkat/polydev-claude-code-plugin/issues",
   "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
   "license": "MIT",
   "keywords": [
