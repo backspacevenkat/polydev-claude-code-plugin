@@ -93,7 +93,7 @@ See the [privacy policy](https://polydev.ai/privacy).
 
 - [polydev.ai](https://polydev.ai)
 - [Install guide](https://polydev.ai/install)
-- [Support](mailto:support@polydev.ai)
+- [Support](mailto:info@polydev.ai)
 
 ## License
 

@@ -71,6 +71,6 @@ Each answer has a "Paid by" line. In this local version, one of these pays:
 
 - Dashboard: [polydev.ai/dashboard](https://polydev.ai/dashboard)
 - Docs: [polydev.ai/docs](https://polydev.ai/docs)
-- Email: support@polydev.ai
+- Email: info@polydev.ai
 
 ---

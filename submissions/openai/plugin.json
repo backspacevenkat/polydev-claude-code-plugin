@@ -5,7 +5,7 @@
   "description": "Ask Claude, Gemini, Grok and other AI models from ChatGPT, and pick the model for each task.",
   "author": {
     "name": "Polydev AI",
-    "email": "support@polydev.ai",
+    "email": "info@polydev.ai",
     "url": "https://polydev.ai"
   },
   "homepage": "https://polydev.ai/install",
@@ -33,7 +33,7 @@
           "Search posts on X"
         ],
         "websiteURL": "https://polydev.ai",
-        "supportURL": "mailto:support@polydev.ai",
+        "supportURL": "mailto:info@polydev.ai",
         "privacyPolicyURL": "https://polydev.ai/privacy",
         "termsOfServiceURL": "https://polydev.ai/terms",
         "defaultPrompt": [
