@@ -1,7 +1,7 @@
 {
   "name": "polydev-hosted",
-  "version": "1.11.0",
-  "description": "Ask several other AI models (GPT, Gemini, Grok and more) the same question and compare the answers. Hosted: nothing to install, sign in once.",
+  "version": "1.12.0",
+  "description": "Ask GPT, Claude, Gemini, Grok and more from the app you already use. Every answer says what paid for it. Hosted: nothing to install, sign in once.",
   "author": {
     "name": "Polydev AI",
     "url": "https://polydev.ai",
@@ -11,8 +11,8 @@
   "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
   "license": "MIT",
   "keywords": [
+    "ask-model",
     "multi-model",
-    "second-opinion",
     "mcp",
     "gpt",
     "gemini",

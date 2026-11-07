@@ -97,7 +97,7 @@ done
 Tell the user:
 - Token has been saved to `~/.polydev.env` and their shell config
 - They need to **restart their IDE** for the token to take effect
-- After restart, they can use `/polydev:ask` to query multiple AI models
+- After restart, they can use `/polydev:ask` to ask another AI model
 
 ## Example
 
@@ -112,7 +112,7 @@ Tell the user:
 >
 > **Important:** Restart your IDE to activate the token.
 >
-> After restart, use `/polydev:ask` to query multiple AI models.
+> After restart, use `/polydev:ask` to ask another AI model.
 
 ## Troubleshooting
 

@@ -1,7 +1,7 @@
 {
   "name": "polydev",
-  "version": "1.11.0",
-  "description": "Ask several other AI models (GPT, Gemini, Grok and more) the same question and compare the answers. Runs locally and can use the AI CLIs you are signed in to.",
+  "version": "1.12.0",
+  "description": "Ask GPT, Claude, Gemini, Grok and more from the app you already use, and make images. Runs locally and can use your ChatGPT plan or the Claude Code and Codex you are signed in to. Every answer says what paid for it.",
   "author": {
     "name": "Polydev AI",
     "url": "https://polydev.ai"
@@ -9,8 +9,8 @@
   "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
   "homepage": "https://polydev.ai",
   "keywords": [
+    "ask-model",
     "multi-model",
-    "second-opinion",
     "mcp",
     "gpt",
     "gemini",

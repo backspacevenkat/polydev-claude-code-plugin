@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "polydev",
-  "version": "1.11.0",
-  "description": "Ask several other AI models the same question and compare their answers.",
+  "version": "1.12.0",
+  "description": "Ask Claude, Gemini, Grok and other AI models from ChatGPT, and pick the model for each task.",
   "author": {
     "name": "Polydev AI",
     "email": "support@polydev.ai",
@@ -12,22 +12,24 @@
   "repository": "https://github.com/backspacevenkat/polydev-claude-code-plugin",
   "license": "MIT",
   "keywords": [
-    "second opinion",
+    "claude",
+    "gemini",
+    "grok",
     "models",
-    "code review",
     "developer tools"
   ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "Polydev",
-        "shortDescription": "Second opinions from other AI models",
-        "longDescription": "Polydev sends your question to the AI models you set up in your Polydev account, such as Gemini, Grok and Claude, and returns each answer so you can compare them. It can also search recent public posts on X. Polydev only reads and answers; it does not change anything in other services.",
+        "shortDescription": "Ask Claude, Gemini and Grok from ChatGPT",
+        "longDescription": "Ask Claude, Gemini, Grok and other AI models from inside ChatGPT, and pick the model for each task. Name one model, name several to see where they agree and differ, or use the default set in your Polydev account. Every answer says what paid for it, such as your own API key or OpenRouter key. Polydev can also search recent public posts on X. It only reads and answers; it does not change anything in other services.",
         "developerName": "Polydev AI",
         "category": "Developer Tools",
         "capabilities": [
-          "Ask other AI models",
-          "Compare answers",
+          "Ask Claude, Gemini and Grok",
+          "Choose a model per task",
+          "Show what paid for each answer",
           "Search posts on X"
         ],
         "websiteURL": "https://polydev.ai",
@@ -35,9 +37,9 @@
         "privacyPolicyURL": "https://polydev.ai/privacy",
         "termsOfServiceURL": "https://polydev.ai/terms",
         "defaultPrompt": [
-          "Ask other models why this bug happens.",
-          "Compare what other models say about this design.",
-          "Get a second opinion on this code review."
+          "Ask Claude to rewrite this in plain English.",
+          "Ask Claude and Gemini about this design, then tell me where they disagree.",
+          "Which models can I ask, and what pays for each?"
         ],
         "brandColor": "#0F172A",
         "brandColorDark": "#F1F5F9",
@@ -50,41 +52,47 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Second opinion on a bug",
-              "prompt": "My React effect runs in an infinite loop when I pass an options object as a dependency. Ask other models why and how to fix it.",
-              "tools_triggered": "get_perspectives",
-              "expected_behavior": "Returns answers from the models set up in the account; ChatGPT summarises where they agree (the object is recreated each render) and the fix (useMemo or a primitive dependency)."
+              "description": "Ask one model by name",
+              "prompt": "Ask Claude to rewrite this error message in plain English: \"ECONNREFUSED 127.0.0.1:5432 - is the server running and accepting TCP/IP connections?\"",
+              "tools_triggered": "ask_model",
+              "expected_behavior": "Calls ask_model with a Claude model. Returns Claude's rewrite (the app can't reach its database on this machine; check that Postgres is running) with a \"Paid by\" line."
             },
             {
-              "description": "Compare a design choice",
-              "prompt": "Ask Polydev whether I should store sessions in Redis or Postgres for a 10k-user app, and compare the answers.",
-              "tools_triggered": "get_perspectives",
-              "expected_behavior": "Returns several models' answers with trade-offs; ChatGPT compares them and gives a recommendation."
+              "description": "Ask several models and compare",
+              "prompt": "Ask Claude and Gemini whether I should store sessions in Redis or Postgres for a 10k-user app, then tell me where they disagree.",
+              "tools_triggered": "ask_model",
+              "expected_behavior": "Calls ask_model with both models. Returns each answer with its \"Paid by\" line; ChatGPT says where they agree, where they differ, and gives a recommendation."
             },
             {
-              "description": "Code review from other models",
-              "prompt": "Get other models to review this function for security issues: def login(u,p): return db.execute(f\"SELECT * FROM users WHERE name='{u}' AND pw='{p}'\")",
-              "tools_triggered": "get_perspectives",
-              "expected_behavior": "Models flag SQL injection and plaintext passwords; ChatGPT lists the shared findings and a parameterised-query fix."
+              "description": "Code review from a chosen model",
+              "prompt": "Have Gemini review this function for security issues: def login(u,p): return db.execute(f\"SELECT * FROM users WHERE name='{u}' AND pw='{p}'\")",
+              "tools_triggered": "ask_model",
+              "expected_behavior": "Gemini flags SQL injection and plaintext passwords; ChatGPT shows the findings, a parameterised-query fix and the \"Paid by\" line."
+            },
+            {
+              "description": "List the models and what pays",
+              "prompt": "Which models can I ask through Polydev, and what pays for each?",
+              "tools_triggered": "list_models",
+              "expected_behavior": "Lists the models the account can reach and, for each, what pays, such as the user's own API key or OpenRouter key."
             },
             {
               "description": "Search recent posts on X",
               "prompt": "Use Polydev to search X for what people are saying about the latest Node.js LTS release.",
               "tools_triggered": "search_x",
-              "expected_behavior": "Returns recent public posts with authors and links; ChatGPT summarises the themes. Read-only."
+              "expected_behavior": "Returns recent public posts with links and a summary of the themes. Read-only. If the account has no xAI key, the tool says so."
             },
             {
               "description": "Record which answer helped",
               "prompt": "Of the answers you just got from Polydev, the Gemini one was most useful. Record that.",
               "tools_triggered": "rank_perspectives",
-              "expected_behavior": "Records the ranking for the previous comparison and confirms it was saved."
+              "expected_behavior": "Records the ranking for the previous answers and confirms it was saved."
             }
           ],
           "negative": [
             {
-              "description": "Image generation is not offered",
-              "prompt": "Use Polydev to generate a logo image for my startup.",
-              "expected_behavior": "Polydev's connector has no image tool; ChatGPT says so and does not call a tool."
+              "description": "No request for another model",
+              "prompt": "What does HTTP status 404 mean?",
+              "expected_behavior": "ChatGPT answers itself; the user did not ask for another model, so no Polydev tool is called."
             },
             {
               "description": "No action on other services",
@@ -103,7 +111,7 @@
         "commerce_description": "Polydev does not sell products or process payments in ChatGPT."
       },
       "publication": {
-        "release_notes": "First release: ask other AI models, compare answers, search X."
+        "release_notes": "First release: ask Claude, Gemini, Grok and other models from ChatGPT, see what paid for each answer, search X."
       }
     }
   }

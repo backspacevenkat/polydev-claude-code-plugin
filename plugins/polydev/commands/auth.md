@@ -61,7 +61,7 @@ fi
 Show the user:
 - Authentication status (connected/not connected)
 - Account email
-- Configured models
+- Sources ready on this machine (ChatGPT plan, Claude Code, Codex) and the configured models
 - If not authenticated, suggest running `/polydev:login`
 
 ## Example

@@ -1,16 +1,24 @@
 # Polydev for Claude Code, Codex, Cursor and Gemini CLI
 
-Ask several other AI models (GPT, Gemini, Grok and more) the same question from your coding agent,
-and compare the answers. Useful for a second opinion on a bug, a design choice or a code review.
+Every AI model, inside the app you already use.
+
+Ask GPT from Claude. Ask Claude from ChatGPT. Make an image with Nano Banana from Codex.
+
+10 free requests to try. After that, your ChatGPT plan or your own API keys pay.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+Switch models, not apps. Pick the model for each task: plan in Claude, have GPT check the migration,
+make the cover image with Nano Banana. Every answer says what paid for it.
+
 There are two ways to run it:
 
-- **Hosted** (`polydev-hosted`): nothing to install. The agent connects to `https://polydev.ai/mcp`
-  and you sign in to Polydev in the browser the first time.
-- **Local** (`polydev`): runs the npm client on your machine (Node.js 20 or newer), so it can also
-  use the AI CLIs you are already signed in to, such as Claude Code, Codex and Gemini CLI.
+- **Hosted** (`polydev-hosted`): nothing to install. The app connects to `https://polydev.ai/mcp`
+  and you sign in to Polydev in the browser the first time. Answers are paid by your own API keys,
+  your OpenRouter key or Polydev's 10 free requests.
+- **Local** (`polydev`): runs the npm client `polydev-ai` on your machine (Node.js 20 or newer). On top
+  of the hosted options it can use your ChatGPT plan (Sign in with ChatGPT), run the Claude Code or
+  Codex CLI you are already signed in to, and make images.
 
 ## Claude Code
 
@@ -56,15 +64,24 @@ See [polydev.ai/install](https://polydev.ai/install) for one-click links and the
 
 ## Tools
 
+Hosted (`https://polydev.ai/mcp`):
+
 | Tool | What it does |
 |------|--------------|
-| `get_perspectives` | Sends your prompt to the models set up in your Polydev account and returns each answer |
-| `search_x` | Searches recent posts on X (read-only) |
+| `ask_model` | Sends your prompt to one model or a list (for example `gpt-6.1-sol`), or to your default set if you name none, and returns each answer with what paid for it |
+| `list_models` | Lists the models you can reach and what pays for each |
+| `search_x` | Searches recent posts on X (read-only; needs your own xAI key) |
 | `rank_perspectives` | Records which answer helped most |
 
-The plugin's slash command `/polydev-hosted:ask <question>` (or `/polydev:ask` for the local version)
-gathers the relevant context, calls `get_perspectives` and summarises where the models agree and differ.
-The agent calls Polydev only when you ask for it or agree to it.
+`get_perspectives` still works as the older name of `ask_model`.
+
+The local client (`polydev-ai` 1.12.0) has the same tools plus `get_auth_status`, `login`,
+`chatgpt_plan_status`, `connect_chatgpt_plan` (Continue with ChatGPT, so your ChatGPT plan pays for
+OpenAI models) and `generate_image`.
+
+The slash command `/polydev-hosted:ask <question>` (or `/polydev:ask` for the local version) gathers the
+relevant context and calls `ask_model`. Name a model to ask just that one; name several to compare them.
+The app calls Polydev only when you ask for it or agree to it.
 
 ## Privacy
 

@@ -2,70 +2,70 @@
 description: Polydev setup guide - commands and usage
 ---
 
-# /polydev-help - Polydev Setup and Usage Guide
+# /polydev:help - Polydev Setup and Usage Guide
 
-Display help information about Polydev multi-model AI consultation.
+Show help for Polydev.
 
 ## Response Template
 
-When the user runs `/polydev-help`, respond with:
+When the user runs `/polydev:help`, respond with:
 
 ---
 
-## Polydev - Multi-Model AI Consultation
+## Polydev - Every AI model, inside the app you already use
 
-Ask several other AI models the same question and compare their answers.
+Ask GPT, Claude, Gemini, Grok and more without leaving this session. Every answer says what paid for it.
 
 ### Quick Start
 
 ```bash
-# 1. Login (opens browser, auto-configures token)
-/polydev-login
+# 1. Sign in (opens the browser and saves the token)
+/polydev:login
 
-# 2. Use it
-/polydev How should I structure my React state?
+# 2. Ask a model
+/polydev:ask have gpt-6.1-sol check this migration before I run it
 ```
 
-### Available Commands
+### Commands
 
 | Command | Description |
 |---------|-------------|
-| `/polydev [question]` | Get multi-model AI perspectives on any problem |
-| `/polydev-login` | Authenticate via browser (recommended) |
-| `/polydev-auth` | Check authentication status |
-| `/perspectives` | Alias for `/polydev` |
-| `/polydev-help` | Show this help message |
+| `/polydev:ask [question]` | Ask one model by name, several, or your default set |
+| `/polydev:login` | Sign in through the browser |
+| `/polydev:auth` | Check sign-in status and which sources are ready |
+| `/polydev:help` | Show this help message |
 
-### Usage Examples
+### Examples
 
-**When debugging:**
+**One model:**
 ```
-/polydev I'm getting a TypeError in my React component when mapping over an array
-```
-
-**When choosing technologies:**
-```
-/polydev Should I use Redis or PostgreSQL for session storage?
+/polydev:ask have GPT check this migration before I run it
 ```
 
-**When reviewing code:**
+**Rewrite in plain English:**
 ```
-/polydev Review this authentication flow for security issues
+/polydev:ask ask Claude to rewrite this error message in plain English
 ```
 
-### How It Works
+**Compare models:**
+```
+/polydev:ask ask GPT and Gemini whether to store sessions in Redis or Postgres, then tell me where they disagree
+```
 
-1. You describe your problem or question
-2. Polydev asks the models set up in your account (your local CLIs, your own API keys, or the free allowance) in parallel; the current list is at [polydev.ai/docs](https://polydev.ai/docs)
-3. You get synthesized insights showing:
-   - Where models **agree** (high confidence)
-   - Where models **differ** (needs consideration)
-   - Actionable **recommendations**
+**Make an image (local version):**
+```
+Make a 1200x630 cover for this post with Nano Banana
+```
 
-### Cost
+### What pays
 
-Polydev is free. Your own access pays for the tokens: the AI CLIs you are signed in to on this machine,
-your own API keys, or a one-time allowance of 10 requests on Polydev's keys.
+Each answer has a "Paid by" line. In this local version, one of these pays:
+- your ChatGPT plan, after Continue with ChatGPT (`connect_chatgpt_plan`), with a weekly cap you set in ChatGPT;
+- the Claude Code or Codex CLI you are signed in to on this machine, under your own login;
+- your own API keys or OpenRouter key, added at [polydev.ai/dashboard/models](https://polydev.ai/dashboard/models);
+- Polydev's 10 free requests.
+
+`list_models` shows which models you can reach and what pays for each.
 
 ### Support
 

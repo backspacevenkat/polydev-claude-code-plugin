@@ -1,31 +1,36 @@
 ---
-description: Get multi-model AI perspectives on any coding problem
-argument-hint: Your question or problem
+description: Ask another AI model (or several) through Polydev
+argument-hint: Your question, optionally naming a model (for example gpt-6.1-sol)
 ---
 
-# /polydev-ask [question] - Get Multi-Model AI Perspectives
+# /polydev:ask [question] - Ask another AI model
 
-Ask several other AI models (such as GPT, Gemini and Grok) the same question and compare their answers.
+Send the user's question to another AI model (such as GPT, Claude, Gemini or Grok) through Polydev and
+show the answer. Every answer says what paid for it.
 
 ## Instructions
 
-When the user runs `/polydev-ask [question]`, do the following:
+When the user runs `/polydev:ask [question]`, do the following:
 
-1. **Extract the question**: Parse the argument after `/polydev-ask` as the question. If no question is provided, look at the recent conversation context.
+1. **Take the question**: use the argument as the question. If there is none, use the problem being discussed.
 
-2. **Enhance the question**: Add relevant context from:
-   - Current file being worked on
-   - Recent errors or debugging attempts
-   - Project structure if relevant
+2. **Pick the model**:
+   - The user names one model (for example "gpt-6.1-sol" or "ask Claude"): pass it as `model`.
+   - The user names several: pass them as `models`.
+   - The user names none: pass neither, and their default set is asked.
+   - `mcp__plugin_polydev_mcp__list_models` shows which models they can reach and what pays for each.
 
-3. **Check if MCP tools are available** by looking for `mcp__plugin_polydev_mcp__get_perspectives` in your tools.
+3. **Add context**: include only what the model needs (the relevant code, the error, constraints). Leave out
+   secrets, keys and unrelated files: Polydev passes the prompt to other model providers.
+
+4. **Check if MCP tools are available** by looking for `mcp__plugin_polydev_mcp__ask_model` in your tools.
 
 ### If MCP tools ARE available:
 
-Call the perspectives tool:
 ```
-mcp__plugin_polydev_mcp__get_perspectives({
-  prompt: "The enhanced question with full context"
+mcp__plugin_polydev_mcp__ask_model({
+  prompt: "The question with the context it needs",
+  model: "gpt-6.1-sol"   // optional; or models: a list of names; omit both for the default set
 })
 ```
 
@@ -44,57 +49,42 @@ fi
 curl -s -X POST "https://www.polydev.ai/api/mcp" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $POLYDEV_USER_TOKEN" \
-  -H "User-Agent: polydev-mcp/1.9.0" \
+  -H "User-Agent: polydev-mcp/1.12.0" \
   -d '{
     "jsonrpc": "2.0",
     "method": "tools/call",
     "params": {
-      "name": "get_perspectives",
+      "name": "ask_model",
       "arguments": {
-        "prompt": "YOUR ENHANCED QUESTION HERE"
+        "prompt": "YOUR QUESTION HERE"
       }
     },
     "id": "1"
   }'
 ```
 
-4. **Synthesize the response**:
-   - Highlight areas of **consensus** (high confidence)
-   - Note where models **differ** (needs consideration)
-   - Provide actionable **recommendations**
+Add `"model": "gpt-6.1-sol"` (or `"models": [...]`) to `arguments` when the user named a model.
 
-## Example Usage
+5. **Show the answer**:
+   - Give each answer with its "Paid by" line.
+   - If several models answered, say where they agree, where they differ, and what you recommend.
 
-**User**: `/polydev-ask How should I structure my React state management?`
+## Example
 
-**Claude calls** (if MCP tools available):
+**User**: `/polydev:ask have gpt-6.1-sol check this migration before I run it`
+
+**Claude calls**:
 ```
-mcp__plugin_polydev_mcp__get_perspectives({
-  prompt: "How should I structure state management in a React application? I'm building a dashboard with real-time updates, user preferences, and form state."
+mcp__plugin_polydev_mcp__ask_model({
+  prompt: "Check this Postgres migration before I run it on production: <migration SQL>. Look for locking, data loss and missing rollbacks.",
+  model: "gpt-6.1-sol"
 })
 ```
 
-**Claude synthesizes**:
-> **Multi-Model Perspectives on React State Management**
->
-> **Consensus (High Confidence)**:
-> - All models recommend separating server state (React Query/SWR) from client state
-> - Zustand is favored for simplicity in medium-sized apps
->
-> **Different Perspectives**:
-> - GPT emphasizes Redux Toolkit for large teams
-> - Gemini recommends Jotai for atomic state
-> - Grok suggests starting simple with useState + Context
->
-> **Recommendation**: Start with Zustand for client state + React Query for server state.
+**Claude replies** with GPT's findings, the "Paid by" line, and what to change before running it.
 
-## When to Use
+## What pays
 
-- **Stuck debugging**: After 2-3 failed attempts
-- **Architecture decisions**: Choosing between approaches
-- **Code review**: Getting validation on implementation
-- **Best practices**: Unsure about patterns
-
-## Models
-
-Polydev asks the models set up in the user's account; the current list is at https://polydev.ai/docs.
+Each answer says what paid for it: the user's ChatGPT plan (after `connect_chatgpt_plan`), the Claude Code
+or Codex CLI they are signed in to on this machine, their own API keys or OpenRouter key, or Polydev's
+10 free requests.
