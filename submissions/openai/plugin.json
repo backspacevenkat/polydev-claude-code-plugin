@@ -22,7 +22,7 @@
     "com.openai": {
       "interface": {
         "displayName": "Polydev",
-        "shortDescription": "Ask Claude, Gemini and Grok from ChatGPT",
+        "shortDescription": "Ask Claude, Gemini and Grok",
         "longDescription": "Ask Claude, Gemini, Grok and other AI models from inside ChatGPT, and pick the model for each task. Name one model, name several to see where they agree and differ, or use the default set in your Polydev account. Every answer says what paid for it, such as your own API key or OpenRouter key. Polydev can also search recent public posts on X. It only reads and answers; it does not change anything in other services.",
         "developerName": "Polydev AI",
         "category": "Developer Tools",
@@ -33,7 +33,7 @@
           "Search posts on X"
         ],
         "websiteURL": "https://polydev.ai",
-        "supportURL": "mailto:info@polydev.ai",
+        "supportURL": "https://github.com/backspacevenkat/polydev-claude-code-plugin/issues",
         "privacyPolicyURL": "https://polydev.ai/privacy",
         "termsOfServiceURL": "https://polydev.ai/terms",
         "defaultPrompt": [
@@ -106,7 +106,6 @@
             }
           ]
         },
-        "demo_recording_url": "REPLACE_WITH_DEMO_VIDEO_URL",
         "commerce": false,
         "commerce_description": "Polydev does not sell products or process payments in ChatGPT."
       },
